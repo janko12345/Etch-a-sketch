@@ -14,7 +14,7 @@
 
 
 #clear-btn{
-    margin-left: 20%;
+    margin-left: 20px;
     margin-bottom: 15px;    
     background-color: aqua;
     padding: 1.5em 3em;
@@ -24,12 +24,13 @@
 }
 
 #main-grid-container{
+    float: left;
     margin-left: 30px;
     display: grid;
     grid-template-columns: repeat(16,1fr);
     grid-template-rows: repeat(16,1fr);
     width: 40%;
     border: 3px solid black;
-    height: 80vh;
+    height: 85vh;
     width: 40%;
 }
