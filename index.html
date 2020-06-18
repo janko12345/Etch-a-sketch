@@ -41,26 +41,25 @@
             for (let i = 0; i < size * size; i++)
             {
                 const divGridElement = document.createElement("div");
-                divGridElement.addEventListener("mouseover",e =>
-                {
-                    
-                    if(e.target.classList.contains("darkening"))
-                    {
-                        let brightness = 100;
-                        brightness = e.target.style.filter.substr(-4,2) || brightness;
-                        e.target.style.filter = `brightness(${brightness-10}%)`;
-                        
-                        return;
-                    }
-                    e.target.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
-                    e.target.classList.add("darkening");
-                }
-                );
+                divGridElement.addEventListener("mouseover",createRectangle);
                 gridContainer.appendChild(divGridElement);
-                    
             }
             gridContainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
             gridContainer.style.gridTemplateRows = `repeat(${size},1fr)`;
+        }
+
+        function createRectangle(){
+
+            if(e.target.classList.contains("darkening"))
+            {
+                let brightness = 100;
+                brightness = e.target.style.filter.substr(-4,2) || brightness;
+                e.target.style.filter = `brightness(${brightness-10}%)`;
+
+                return;
+            }
+            e.target.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
+            e.target.classList.add("darkening");
         }
 
         function removeGrid(){
