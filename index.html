@@ -55,7 +55,7 @@
         function recreateGridByUser(){
             let usersGridSize = prompt("enter the number which will define the size of 2D grid") * 1;
             
-            while(isNaN(usersGridSize) || usersGridSize < 1)
+            while(isNaN(usersGridSize) || usersGridSize < 1 || usersGridSize % 1 !== 0)
                 usersGridSize = prompt("Invalid value. Value must be positive integer bigger than 0") * 1;
             
 
