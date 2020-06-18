@@ -25,11 +25,12 @@
         
 
         createGrid(gridSize);
-
         clrBtn.addEventListener("click", recreateGridByUser);
 
         
         
+
+
 
         //function section
 
@@ -38,7 +39,14 @@
             for (let i = 0; i < size * size; i++)
             {
                 const divGridElement = document.createElement("div");
-                divGridElement.addEventListener("mouseover",e => e.target.style.backgroundColor = "blue");
+                divGridElement.addEventListener("mouseover",e =>
+                {
+                    let red = Math.floor(Math.random()*256);
+                    let green = Math.floor(Math.random()*256);
+                    let blue = Math.floor(Math.random()*256);
+                    e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
+                }
+                );
                 gridContainer.appendChild(divGridElement);
                     
             }
