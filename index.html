@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+
+    <button id="clear-btn">Clear</button>
     
     <div id="main-grid-container">
         
@@ -15,23 +17,51 @@
 
     <script>
 
-        let gridColumns = 16;
-        let gridRows = 16;
-        let totalCount = gridRows*gridColumns;
+        let gridSize = 16;
     
 
+        const clrBtn = document.querySelector("#clear-btn");
         const gridContainer = document.querySelector("#main-grid-container");
         
-        for (let i = 0; i < gridRows; i++)
-            for (let j = 0; j < gridColumns; j++) {
+
+        createGrid(gridSize);
+
+        clrBtn.addEventListener("click", recreateGridByUser);
+
+        
+        
+
+        //function section
+
+        function createGrid(size){
+
+            for (let i = 0; i < size * size; i++)
+            {
                 const divGridElement = document.createElement("div");
                 divGridElement.addEventListener("mouseover",e => e.target.style.backgroundColor = "blue");
                 gridContainer.appendChild(divGridElement);
-                
-                
+                    
             }
+            gridContainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
+            gridContainer.style.gridTemplateRows = `repeat(${size},1fr)`;
+        }
 
-        
+        function removeGrid(){
+
+            gridContainer.innerHTML = "";
+
+        }
+
+        function recreateGridByUser(){
+            let usersGridSize = prompt("enter the number which will define the size of 2D grid") * 1;
+            
+            while(isNaN(usersGridSize) || usersGridSize < 1)
+                usersGridSize = prompt("Invalid value. Value must be positive integer bigger than 0") * 1;
+            
+
+            removeGrid();
+            createGrid(usersGridSize);
+        }
 
     </script>
 
